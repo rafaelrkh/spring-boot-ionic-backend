@@ -1,6 +1,8 @@
 package com.rafael.cursomc.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,6 +15,9 @@ public class Categorias implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer cd_categoria;
 	private String ds_categoria;
+	
+	@ManyToMany(mappedBy="categorias") 
+	private List<Produtos> produtos = new ArrayList<>();
 
 	public Categorias() {
 
@@ -39,6 +44,15 @@ public class Categorias implements Serializable{
 	public void setDs_categoria(String ds_categeoria) {
 		this.ds_categoria = ds_categeoria;
 	}
+	
+	public List<Produtos> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produtos> produtos) {
+		this.produtos = produtos;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -65,5 +79,5 @@ public class Categorias implements Serializable{
 		return true;
 	}
 
-	
+		
 }
