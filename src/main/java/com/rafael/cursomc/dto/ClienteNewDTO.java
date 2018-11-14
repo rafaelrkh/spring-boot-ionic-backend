@@ -2,24 +2,52 @@ package com.rafael.cursomc.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.rafael.cursomc.services.validation.ClienteInsert;
+
+//Anotação customizada para validações de CPF e CNPJ - TIPO DA PESSOA
+@ClienteInsert
 public class ClienteNewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 
+	@NotEmpty(message="Preenchimento obrigatório")
+	@Length(min=5, max=100, message="O tamanho deve ser entre 5 e 100 caracteres")
 	private String dsNome;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
+	@Email(message="E-mail inválido!")
 	private String dsEmail;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String dsCpfCnpj;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String dsSenha;
 	
 	private Integer tipo;
 	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String dsTelefone1;
+	
 	private String dsTelefone2;
 	private String dsTelefone3;
 	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String dsLogradouro;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String dsNumero;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String dsBairro;
+	
 	private String dsComplemento;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String dsCep;	
 
 	private Integer cdCidade;
