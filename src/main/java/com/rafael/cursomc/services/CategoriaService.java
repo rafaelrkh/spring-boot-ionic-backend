@@ -25,4 +25,9 @@ public class CategoriaService {
 		  
 		  return obj.orElse(null);
 	}
+	
+	public Categorias insert(Categorias obj) {
+		obj.setCd_categoria(null); // O Codigo deve ser nulo, pois o método "save" entende que é uma inserção e não alteração
+		return rep.save(obj);
+	}
 }
