@@ -2,6 +2,9 @@ package com.rafael.cursomc.dto;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.rafael.cursomc.domain.Categorias;
 
 public class CategoriaDTO implements Serializable{
@@ -10,6 +13,8 @@ public class CategoriaDTO implements Serializable{
 	//Define os dados que serão trafegados quando for fazer operação
 	
 	private Integer cdCategoria;
+	@NotEmpty(message="Preenchimento obrigatório")
+	@Length(min=5,max=80,message="O tamanho deve ser maior do que 5 e menor do que 80 caracteres")
 	private String dsCategoria;
 	
 	public CategoriaDTO() {
