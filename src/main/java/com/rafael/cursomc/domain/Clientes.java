@@ -39,6 +39,9 @@ public class Clientes implements Serializable {
 	@ElementCollection
 	@CollectionTable(name="telefone")
 	private Set<String> telefones = new HashSet<>(); // Entidade fraca
+	
+	@OneToMany(mappedBy="cliente")
+	private List<Pedidos> pedidos = new ArrayList<Pedidos>();
 
 	public Clientes() {
 
@@ -117,6 +120,14 @@ public class Clientes implements Serializable {
 
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
+	}
+
+	public List<Pedidos> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedidos> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	@Override
