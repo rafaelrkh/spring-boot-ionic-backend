@@ -1,12 +1,19 @@
 package com.rafael.cursomc.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.rafael.cursomc.domain.Clientes;
+import com.rafael.cursomc.dto.ClienteDTO;
 import com.rafael.cursomc.repositories.ClienteRepository;
+import com.rafael.cursomc.services.exceptions.DataIntegrityException;
 import com.rafael.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -14,15 +21,60 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository rep;
+
+	public Clientes find(Integer cd_cliente) {
+		Optional<Clientes> obj = rep.findById(cd_cliente);
+
+		if (obj == null) {
+			throw new ObjectNotFoundException(
+					"Objeto não encontrado! Código: " + cd_cliente + ", Tipo: " + Clientes.class.getName());
+		}
+
+		return obj.orElse(null);
+	}
+
+	public Clientes update(Clientes obj) {
+
+		// Verificando existência de código da categoria
+		Clientes newObj = find(obj.getCd_cliente());
+		 updateData(newObj, obj); // Atualiza os dados do objeto que criou de acordo com o passado no método
+
+		return rep.save(newObj);
+	}
+
+	public void delete(Integer cdCliente) {
+
+		// Verificando existência de código da categoria
+		find(cdCliente);
+
+		try {
+
+			rep.deleteById(cdCliente);
+
+		} catch (DataIntegrityViolationException e) { // Se houver alguma integridade de categoria e produto, esta excessão aborta a exclusão
+
+			throw new DataIntegrityException("Não é possível excluir porque há entidades relacionadas!");
+		}
+	}
+
+	public List<Clientes> findAll() {
+		return rep.findAll();
+	}
+
+	// Retorna uma página de Clientes, fazendo a "Paginação"
+	public Page<Clientes> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+
+		return rep.findAll(pageRequest);
+	}
+
+	public Clientes fromDTO(ClienteDTO objDto) {
+		return new Clientes(objDto.getCdCliente(), objDto.getDsNome(), objDto.getDsEmail(), null, null, null);
+	}
 	
-	public Clientes find(Integer cd_cliente){
-		  Optional<Clientes> obj  = rep.findById(cd_cliente);
-		  
-		  if(obj == null) {
-			 throw new ObjectNotFoundException("Objeto não encontrado! Código: " + cd_cliente +
-					 ", Tipo: " + Clientes.class.getName());  
-		  }
-		  
-		  return obj.orElse(null);
+	private void updateData(Clientes newObj, Clientes obj) {
+		newObj.setDs_nome(obj.getDs_nome());
+		newObj.setDs_email(obj.getDs_email());
 	}
 }

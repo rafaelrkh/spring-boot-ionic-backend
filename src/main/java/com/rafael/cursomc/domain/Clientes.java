@@ -55,7 +55,7 @@ public class Clientes implements Serializable {
 		this.dsEmail = ds_email;
 		this.dsCpfCnpj = ds_cpf_cnpj;
 		this.dsSenha = ds_senha;
-		this.tipo = tipo.getCdTipoCliente();
+		this.tipo = (tipo ==null) ? null : tipo.getCdTipoCliente();
 	}
 
 	public Integer getCd_cliente() {
