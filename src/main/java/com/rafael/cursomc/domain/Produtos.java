@@ -2,7 +2,9 @@ package com.rafael.cursomc.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -32,6 +35,21 @@ public class Produtos implements Serializable{
 	           joinColumns = @JoinColumn(name = "cd_produto"),
 	           inverseJoinColumns = @JoinColumn(name = "cd_categoria")) 
 	private List<Categorias> categorias = new ArrayList<>();
+	
+	//Conjunto de itens
+	@OneToMany(mappedBy="id.produto")
+    private Set<ItensPedido> itens = new HashSet<>();
+    
+    //Retorna os pedidos que contenham esse produto
+    public List<Pedidos> getPedidos(){
+    	List<Pedidos> lista = new ArrayList<>();
+    	
+    	for(ItensPedido x : itens) {
+    		lista.add(x.getPedido());
+    	}
+    	
+    	return lista;
+    }
 
 	public Produtos() {
 
@@ -44,30 +62,6 @@ public class Produtos implements Serializable{
 		this.quantidade_estoque = quantidade_estoque;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cd_produto == null) ? 0 : cd_produto.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Produtos other = (Produtos) obj;
-		if (cd_produto == null) {
-			if (other.cd_produto != null)
-				return false;
-		} else if (!cd_produto.equals(other.cd_produto))
-			return false;
-		return true;
-	}
 
 	public Integer getCd_produto() {
 		return cd_produto;
@@ -99,8 +93,39 @@ public class Produtos implements Serializable{
 
 	public void setCategorias(List<Categorias> categorias) {
 		this.categorias = categorias;
+	}	
+	
+	public Set<ItensPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItensPedido> itens) {
+		this.itens = itens;
 	}
 	
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cd_produto == null) ? 0 : cd_produto.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produtos other = (Produtos) obj;
+		if (cd_produto == null) {
+			if (other.cd_produto != null)
+				return false;
+		} else if (!cd_produto.equals(other.cd_produto))
+			return false;
+		return true;
+	}
 
 }
