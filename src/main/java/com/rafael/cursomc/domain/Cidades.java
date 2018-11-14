@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 public class Cidades implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -20,7 +18,6 @@ public class Cidades implements Serializable{
 	private Integer cd_cidade;
 	private String ds_cidade;
 	
-	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="cd_estado")
 	private Estados estado;

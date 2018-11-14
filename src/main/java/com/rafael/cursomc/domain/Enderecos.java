@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Enderecos implements Serializable {
@@ -24,7 +24,7 @@ public class Enderecos implements Serializable {
 	private String ds_complemento;
 	private String ds_cep;
 	
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="cd_cliente")
 	private Clientes cliente;
