@@ -39,11 +39,12 @@ public class CategoriaService {
 	}
 	
 	public Categorias update(Categorias obj) {
-		
-		//Verificando existência de código da categoria
-		find(obj.getCd_categoria());
-		
-		return rep.save(obj);
+
+		// Verificando existência de código da categoria
+		Categorias newObj = find(obj.getCd_categoria());
+		 updateData(newObj, obj); // Atualiza os dados do objeto que criou de acordo com o passado no método
+
+		return rep.save(newObj);
 	}
 	
 	public void delete(Integer cd_categoria) {
@@ -76,4 +77,9 @@ public class CategoriaService {
 	public Categorias fromDTO(CategoriaDTO objDTO) {
 		return new Categorias(objDTO.getCd_categoria(), objDTO.getDs_categoria());
 	}
+	
+	private void  updateData(Categorias newObj, Categorias obj) {
+		newObj.setDs_categoria(obj.getDs_categoria());
+	}
+	
 }
