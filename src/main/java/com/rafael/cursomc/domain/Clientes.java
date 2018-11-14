@@ -23,11 +23,11 @@ public class Clientes implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cd_cliente;
-	private String ds_nome;
-	private String ds_email;
-	private String ds_cpf_cnpj;
-	private String ds_senha;
+	private Integer cdCliente;
+	private String dsNome;
+	private String dsEmail;
+	private String dsCpfCnpj;
+	private String dsSenha;
 
 	private Integer tipo;
 
@@ -50,52 +50,52 @@ public class Clientes implements Serializable {
 	public Clientes(Integer cd_cliente, String ds_nome, String ds_email, String ds_cpf_cnpj, String ds_senha,
 			TipoCliente tipo) {
 		super();
-		this.cd_cliente = cd_cliente;
-		this.ds_nome = ds_nome;
-		this.ds_email = ds_email;
-		this.ds_cpf_cnpj = ds_cpf_cnpj;
-		this.ds_senha = ds_senha;
+		this.cdCliente = cd_cliente;
+		this.dsNome = ds_nome;
+		this.dsEmail = ds_email;
+		this.dsCpfCnpj = ds_cpf_cnpj;
+		this.dsSenha = ds_senha;
 		this.tipo = tipo.getCdTipoCliente();
 	}
 
 	public Integer getCd_cliente() {
-		return cd_cliente;
+		return cdCliente;
 	}
 
 	public void setCd_cliente(Integer cd_cliente) {
-		this.cd_cliente = cd_cliente;
+		this.cdCliente = cd_cliente;
 	}
 
 	public String getDs_nome() {
-		return ds_nome;
+		return dsNome;
 	}
 
 	public void setDs_nome(String ds_nome) {
-		this.ds_nome = ds_nome;
+		this.dsNome = ds_nome;
 	}
 
 	public String getDs_email() {
-		return ds_email;
+		return dsEmail;
 	}
 
 	public void setDs_email(String ds_email) {
-		this.ds_email = ds_email;
+		this.dsEmail = ds_email;
 	}
 
 	public String getDs_cpf_cnpj() {
-		return ds_cpf_cnpj;
+		return dsCpfCnpj;
 	}
 
 	public void setDs_cpf_cnpj(String ds_cpf_cnpj) {
-		this.ds_cpf_cnpj = ds_cpf_cnpj;
+		this.dsCpfCnpj = ds_cpf_cnpj;
 	}
 
 	public String getDs_senha() {
-		return ds_senha;
+		return dsSenha;
 	}
 
 	public void setDs_senha(String ds_senha) {
-		this.ds_senha = ds_senha;
+		this.dsSenha = ds_senha;
 	}
 
 	public TipoCliente getTipo() {
@@ -134,7 +134,7 @@ public class Clientes implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cd_cliente == null) ? 0 : cd_cliente.hashCode());
+		result = prime * result + ((cdCliente == null) ? 0 : cdCliente.hashCode());
 		return result;
 	}
 
@@ -147,10 +147,10 @@ public class Clientes implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Clientes other = (Clientes) obj;
-		if (cd_cliente == null) {
-			if (other.cd_cliente != null)
+		if (cdCliente == null) {
+			if (other.cdCliente != null)
 				return false;
-		} else if (!cd_cliente.equals(other.cd_cliente))
+		} else if (!cdCliente.equals(other.cdCliente))
 			return false;
 		return true;
 	}

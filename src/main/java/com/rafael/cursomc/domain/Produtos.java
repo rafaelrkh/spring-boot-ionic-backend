@@ -25,9 +25,9 @@ public class Produtos implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cd_produto;
-	private String ds_produto;
-	private Double quantidade_estoque;
+	private Integer cdProduto;
+	private String dsProduto;
+	private Double quantidadeEstoque;
 	
 	@JsonIgnore
 	@ManyToMany
@@ -59,34 +59,34 @@ public class Produtos implements Serializable{
 
 	public Produtos(Integer cd_produto, String ds_produto, Double quantidade_estoque) {
 		super();
-		this.cd_produto = cd_produto;
-		this.ds_produto = ds_produto;
-		this.quantidade_estoque = quantidade_estoque;
+		this.cdProduto = cd_produto;
+		this.dsProduto = ds_produto;
+		this.quantidadeEstoque = quantidade_estoque;
 	}
 
 
 	public Integer getCd_produto() {
-		return cd_produto;
+		return cdProduto;
 	}
 
 	public void setCd_produto(Integer cd_produto) {
-		this.cd_produto = cd_produto;
+		this.cdProduto = cd_produto;
 	}
 
 	public String getDs_produto() {
-		return ds_produto;
+		return dsProduto;
 	}
 
 	public void setDs_produto(String ds_produto) {
-		this.ds_produto = ds_produto;
+		this.dsProduto = ds_produto;
 	}
 
 	public Double getQuantidade_estoque() {
-		return quantidade_estoque;
+		return quantidadeEstoque;
 	}
 
 	public void setQuantidade_estoque(Double quantidade_estoque) {
-		this.quantidade_estoque = quantidade_estoque;
+		this.quantidadeEstoque = quantidade_estoque;
 	}
 
 	public List<Categorias> getCategorias() {
@@ -109,7 +109,7 @@ public class Produtos implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cd_produto == null) ? 0 : cd_produto.hashCode());
+		result = prime * result + ((cdProduto == null) ? 0 : cdProduto.hashCode());
 		return result;
 	}
 
@@ -122,10 +122,10 @@ public class Produtos implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Produtos other = (Produtos) obj;
-		if (cd_produto == null) {
-			if (other.cd_produto != null)
+		if (cdProduto == null) {
+			if (other.cdProduto != null)
 				return false;
-		} else if (!cd_produto.equals(other.cd_produto))
+		} else if (!cdProduto.equals(other.cdProduto))
 			return false;
 		return true;
 	}

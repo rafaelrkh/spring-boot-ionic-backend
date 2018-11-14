@@ -9,32 +9,32 @@ public class CategoriaDTO implements Serializable{
 
 	//Define os dados que serão trafegados quando for fazer operação
 	
-	private Integer cd_categoria;
-	private String ds_categoria;
+	private Integer cdCategoria;
+	private String dsCategoria;
 	
 	public CategoriaDTO() {
 		
 	}
 	
 	public CategoriaDTO(Categorias obj) {
-		cd_categoria = obj.getCd_categoria();
-		ds_categoria = obj.getDs_categoria();
+		cdCategoria = obj.getCd_categoria();
+		dsCategoria = obj.getDs_categoria();
 	}
 
 	public Integer getCd_categoria() {
-		return cd_categoria;
+		return cdCategoria;
 	}
 
 	public void setCd_categoria(Integer cd_categoria) {
-		this.cd_categoria = cd_categoria;
+		this.cdCategoria = cd_categoria;
 	}
 
 	public String getDs_categoria() {
-		return ds_categoria;
+		return dsCategoria;
 	}
 
 	public void setDs_categoria(String ds_categoria) {
-		this.ds_categoria = ds_categoria;
+		this.dsCategoria = ds_categoria;
 	}
 	
 	 

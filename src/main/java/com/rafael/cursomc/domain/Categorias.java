@@ -18,8 +18,8 @@ public class Categorias implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cd_categoria;
-	private String ds_categoria;
+	private Integer cdCategoria;
+	private String dsCategoria;
 	
 	
 	@ManyToMany(mappedBy="categorias") 
@@ -31,24 +31,24 @@ public class Categorias implements Serializable{
 
 	public Categorias(Integer cd_categoria, String ds_categeoria) {
 		super();
-		this.cd_categoria = cd_categoria;
-		this.ds_categoria = ds_categeoria;
+		this.cdCategoria = cd_categoria;
+		this.dsCategoria = ds_categeoria;
 	}
 
 	public Integer getCd_categoria() {
-		return cd_categoria;
+		return cdCategoria;
 	}
 
 	public void setCd_categoria(Integer cd_categoria) {
-		this.cd_categoria = cd_categoria;
+		this.cdCategoria = cd_categoria;
 	}
 
 	public String getDs_categoria() {
-		return ds_categoria;
+		return dsCategoria;
 	}
 
 	public void setDs_categoria(String ds_categeoria) {
-		this.ds_categoria = ds_categeoria;
+		this.dsCategoria = ds_categeoria;
 	}
 	
 	public List<Produtos> getProdutos() {
@@ -64,7 +64,7 @@ public class Categorias implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cd_categoria == null) ? 0 : cd_categoria.hashCode());
+		result = prime * result + ((cdCategoria == null) ? 0 : cdCategoria.hashCode());
 		return result;
 	}
 
@@ -77,10 +77,10 @@ public class Categorias implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Categorias other = (Categorias) obj;
-		if (cd_categoria == null) {
-			if (other.cd_categoria != null)
+		if (cdCategoria == null) {
+			if (other.cdCategoria != null)
 				return false;
-		} else if (!cd_categoria.equals(other.cd_categoria))
+		} else if (!cdCategoria.equals(other.cdCategoria))
 			return false;
 		return true;
 	}

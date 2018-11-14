@@ -19,9 +19,9 @@ public abstract class Pagamentos  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private Integer cd_pagamento;
+	private Integer cdPagamento;
 	
-	private Integer estado_pagamento;
+	private Integer estadoPagamento;
 	
 	@JsonIgnore
 	@OneToOne
@@ -34,25 +34,25 @@ public abstract class Pagamentos  implements Serializable{
 	}
 
 	public Pagamentos(Integer cd_pagamento, EstadoPagamento estado_pagamento, Pedidos pedido) {
-		this.cd_pagamento = cd_pagamento;
-		this.estado_pagamento = estado_pagamento.getCdEstadoPagamento();
+		this.cdPagamento = cd_pagamento;
+		this.estadoPagamento = estado_pagamento.getCdEstadoPagamento();
 		this.pedido = pedido;
 	}
 
 	public Integer getCd_pagamento() {
-		return cd_pagamento;
+		return cdPagamento;
 	}
 
 	public void setCd_pagamento(Integer cd_pagamento) {
-		this.cd_pagamento = cd_pagamento;
+		this.cdPagamento = cd_pagamento;
 	}
 
 	public EstadoPagamento getEstado_pagamento() {
-		return EstadoPagamento.toEnum(estado_pagamento);
+		return EstadoPagamento.toEnum(estadoPagamento);
 	}
 
 	public void setEstado_pagamento(EstadoPagamento estado_pagamento) {
-		this.estado_pagamento = estado_pagamento.getCdEstadoPagamento();
+		this.estadoPagamento = estado_pagamento.getCdEstadoPagamento();
 	}
 
 	public Pedidos getPedido() {
@@ -69,7 +69,7 @@ public abstract class Pagamentos  implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + cd_pagamento;
+		result = prime * result + cdPagamento;
 		return result;
 	}
 
@@ -82,7 +82,7 @@ public abstract class Pagamentos  implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Pagamentos other = (Pagamentos) obj;
-		if (cd_pagamento != other.cd_pagamento)
+		if (cdPagamento != other.cdPagamento)
 			return false;
 		return true;
 	}

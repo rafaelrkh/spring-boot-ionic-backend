@@ -15,8 +15,8 @@ public class Cidades implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cd_cidade;
-	private String ds_cidade;
+	private Integer cdCidade;
+	private String dsCidade;
 	
 	@ManyToOne
 	@JoinColumn(name="cd_estado")
@@ -28,25 +28,25 @@ public class Cidades implements Serializable{
 
 	public Cidades(Integer cd_cidade, String ds_cidade, Estados estado) {
 		super();
-		this.cd_cidade = cd_cidade;
-		this.ds_cidade = ds_cidade;
+		this.cdCidade = cd_cidade;
+		this.dsCidade = ds_cidade;
 		this.estado = estado;
 	}
 
 	public Integer getCd_cidade() {
-		return cd_cidade;
+		return cdCidade;
 	}
 
 	public void setCd_cidade(Integer cd_cidade) {
-		this.cd_cidade = cd_cidade;
+		this.cdCidade = cd_cidade;
 	}
 
 	public String getDs_cidade() {
-		return ds_cidade;
+		return dsCidade;
 	}
 
 	public void setDs_cidade(String ds_cidade) {
-		this.ds_cidade = ds_cidade;
+		this.dsCidade = ds_cidade;
 	}
 
 	public Estados getEstado() {
@@ -61,7 +61,7 @@ public class Cidades implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cd_cidade == null) ? 0 : cd_cidade.hashCode());
+		result = prime * result + ((cdCidade == null) ? 0 : cdCidade.hashCode());
 		return result;
 	}
 
@@ -74,10 +74,10 @@ public class Cidades implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cidades other = (Cidades) obj;
-		if (cd_cidade == null) {
-			if (other.cd_cidade != null)
+		if (cdCidade == null) {
+			if (other.cdCidade != null)
 				return false;
-		} else if (!cd_cidade.equals(other.cd_cidade))
+		} else if (!cdCidade.equals(other.cdCidade))
 			return false;
 		return true;
 	}

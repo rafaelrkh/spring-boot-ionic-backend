@@ -17,12 +17,12 @@ public class Enderecos implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cd_endereco;
-	private String ds_logradouro;
-	private String ds_numero;
-	private String ds_bairro;
-	private String ds_complemento;
-	private String ds_cep;
+	private Integer cdEndereco;
+	private String dsLogradouro;
+	private String dsNumero;
+	private String dsBairro;
+	private String dsComplemento;
+	private String dsCep;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -40,62 +40,62 @@ public class Enderecos implements Serializable {
 	public Enderecos(Integer cd_endereco, String ds_logradouro, String ds_numero, String ds_bairro,
 			String ds_complemento, String ds_cep, Clientes cliente, Cidades cidade) {
 		super();
-		this.cd_endereco = cd_endereco;
-		this.ds_logradouro = ds_logradouro;
-		this.ds_numero = ds_numero;
-		this.ds_bairro = ds_bairro;
-		this.ds_complemento = ds_complemento;
-		this.ds_cep = ds_cep;
+		this.cdEndereco = cd_endereco;
+		this.dsLogradouro = ds_logradouro;
+		this.dsNumero = ds_numero;
+		this.dsBairro = ds_bairro;
+		this.dsComplemento = ds_complemento;
+		this.dsCep = ds_cep;
 		this.cliente = cliente;
 		this.cidade = cidade;
 	}
 
 	public Integer getCd_endereco() {
-		return cd_endereco;
+		return cdEndereco;
 	}
 
 	public void setCd_endereco(Integer cd_endereco) {
-		this.cd_endereco = cd_endereco;
+		this.cdEndereco = cd_endereco;
 	}
 
 	public String getDs_logradouro() {
-		return ds_logradouro;
+		return dsLogradouro;
 	}
 
 	public void setDs_logradouro(String ds_logradouro) {
-		this.ds_logradouro = ds_logradouro;
+		this.dsLogradouro = ds_logradouro;
 	}
 
 	public String getDs_numero() {
-		return ds_numero;
+		return dsNumero;
 	}
 
 	public void setDs_numero(String ds_numero) {
-		this.ds_numero = ds_numero;
+		this.dsNumero = ds_numero;
 	}
 
 	public String getDs_bairro() {
-		return ds_bairro;
+		return dsBairro;
 	}
 
 	public void setDs_bairro(String ds_bairro) {
-		this.ds_bairro = ds_bairro;
+		this.dsBairro = ds_bairro;
 	}
 
 	public String getDs_complemento() {
-		return ds_complemento;
+		return dsComplemento;
 	}
 
 	public void setDs_complemento(String ds_complemento) {
-		this.ds_complemento = ds_complemento;
+		this.dsComplemento = ds_complemento;
 	}
 
 	public String getDs_cep() {
-		return ds_cep;
+		return dsCep;
 	}
 
 	public void setDs_cep(String ds_cep) {
-		this.ds_cep = ds_cep;
+		this.dsCep = ds_cep;
 	}
 	
 	
@@ -120,7 +120,7 @@ public class Enderecos implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cd_endereco == null) ? 0 : cd_endereco.hashCode());
+		result = prime * result + ((cdEndereco == null) ? 0 : cdEndereco.hashCode());
 		return result;
 	}
 
@@ -133,10 +133,10 @@ public class Enderecos implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Enderecos other = (Enderecos) obj;
-		if (cd_endereco == null) {
-			if (other.cd_endereco != null)
+		if (cdEndereco == null) {
+			if (other.cdEndereco != null)
 				return false;
-		} else if (!cd_endereco.equals(other.cd_endereco))
+		} else if (!cdEndereco.equals(other.cdEndereco))
 			return false;
 		return true;
 	}

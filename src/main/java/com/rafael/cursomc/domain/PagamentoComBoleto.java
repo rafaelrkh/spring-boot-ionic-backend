@@ -12,10 +12,10 @@ public class PagamentoComBoleto extends Pagamentos{
 	private static final long serialVersionUID = 1L;
 	
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
-	private Date dt_vencimento;
+	private Date dtVencimento;
 	
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
-	private Date dt_pagamento;
+	private Date dtPagamento;
 	
 	public PagamentoComBoleto() {
 		
@@ -23,24 +23,24 @@ public class PagamentoComBoleto extends Pagamentos{
 
 	public PagamentoComBoleto(Integer cd_pagamento, EstadoPagamento estado_pagamento, Pedidos pedido, Date dt_vencimento, Date dt_pagamento) {
 		super(cd_pagamento, estado_pagamento, pedido);
-		this.dt_vencimento = dt_vencimento;
-		this.dt_pagamento = dt_pagamento;
+		this.dtVencimento = dt_vencimento;
+		this.dtPagamento = dt_pagamento;
 	}
 
 	public Date getDt_vencimento() {
-		return dt_vencimento;
+		return dtVencimento;
 	}
 
 	public void setDt_vencimento(Date dt_vencimento) {
-		this.dt_vencimento = dt_vencimento;
+		this.dtVencimento = dt_vencimento;
 	}
 
 	public Date getDt_pagamento() {
-		return dt_pagamento;
+		return dtPagamento;
 	}
 
 	public void setDt_pagamento(Date dt_pagamento) {
-		this.dt_pagamento = dt_pagamento;
+		this.dtPagamento = dt_pagamento;
 	}
 	
 	

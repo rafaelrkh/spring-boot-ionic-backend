@@ -23,10 +23,10 @@ public class Pedidos implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cd_pedido;
+	private Integer cdPedido;
 	
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
-	private Date dt_pedido;
+	private Date dtPedido;
 	
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="pedido")
 	private Pagamentos pagamento;
@@ -37,7 +37,7 @@ public class Pedidos implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="cd_endereco_entrega")
-	private Enderecos endereco_entrega;
+	private Enderecos enderecoEntrega;
 	
 	//Conjunto de itens
 	@OneToMany(mappedBy="id.pedido")
@@ -49,27 +49,27 @@ public class Pedidos implements Serializable{
 
 	public Pedidos(Integer cd_pedido, Date dt_pedido,  Clientes cliente, Enderecos endereco_entrega) {
 		super();
-		this.cd_pedido = cd_pedido;
-		this.dt_pedido = dt_pedido;
+		this.cdPedido = cd_pedido;
+		this.dtPedido = dt_pedido;
 		//this.pagamento = pagamento;
 		this.cliente = cliente;
-		this.endereco_entrega = endereco_entrega;
+		this.enderecoEntrega = endereco_entrega;
 	}
 
 	public Integer getCd_pedido() {
-		return cd_pedido;
+		return cdPedido;
 	}
 
 	public void setCd_pedido(Integer cd_pedido) {
-		this.cd_pedido = cd_pedido;
+		this.cdPedido = cd_pedido;
 	}
 
 	public Date getDt_pedido() {
-		return dt_pedido;
+		return dtPedido;
 	}
 
 	public void setDt_pedido(Date dt_pedido) {
-		this.dt_pedido = dt_pedido;
+		this.dtPedido = dt_pedido;
 	}
 
 	public Pagamentos getPagamento() {
@@ -89,11 +89,11 @@ public class Pedidos implements Serializable{
 	}
 
 	public Enderecos getEndereco_entrega() {
-		return endereco_entrega;
+		return enderecoEntrega;
 	}
 
 	public void setEndereco_entrega(Enderecos endereco_entrega) {
-		this.endereco_entrega = endereco_entrega;
+		this.enderecoEntrega = endereco_entrega;
 	}
 	
 	public Set<ItensPedido> getItens() {
@@ -109,7 +109,7 @@ public class Pedidos implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cd_pedido == null) ? 0 : cd_pedido.hashCode());
+		result = prime * result + ((cdPedido == null) ? 0 : cdPedido.hashCode());
 		return result;
 	}
 
@@ -122,10 +122,10 @@ public class Pedidos implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Pedidos other = (Pedidos) obj;
-		if (cd_pedido == null) {
-			if (other.cd_pedido != null)
+		if (cdPedido == null) {
+			if (other.cdPedido != null)
 				return false;
-		} else if (!cd_pedido.equals(other.cd_pedido))
+		} else if (!cdPedido.equals(other.cdPedido))
 			return false;
 		return true;
 	}

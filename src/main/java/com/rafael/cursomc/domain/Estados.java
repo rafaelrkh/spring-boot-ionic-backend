@@ -18,8 +18,8 @@ public class Estados implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cd_estado;
-	private String ds_estado;
+	private Integer cdEstado;
+	private String dsEstado;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="estado")
@@ -31,24 +31,24 @@ public class Estados implements Serializable{
 
 	public Estados(Integer cd_estado, String ds_estado) {
 		super();
-		this.cd_estado = cd_estado;
-		this.ds_estado = ds_estado;
+		this.cdEstado = cd_estado;
+		this.dsEstado = ds_estado;
 	}
 
 	public Integer getCd_estado() {
-		return cd_estado;
+		return cdEstado;
 	}
 
 	public void setCd_estado(Integer cd_estado) {
-		this.cd_estado = cd_estado;
+		this.cdEstado = cd_estado;
 	}
 
 	public String getDs_estado() {
-		return ds_estado;
+		return dsEstado;
 	}
 
 	public void setDs_estado(String ds_estado) {
-		this.ds_estado = ds_estado;
+		this.dsEstado = ds_estado;
 	}
 
 	public List<Cidades> getCidades() {
@@ -63,7 +63,7 @@ public class Estados implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cd_estado == null) ? 0 : cd_estado.hashCode());
+		result = prime * result + ((cdEstado == null) ? 0 : cdEstado.hashCode());
 		return result;
 	}
 
@@ -76,10 +76,10 @@ public class Estados implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Estados other = (Estados) obj;
-		if (cd_estado == null) {
-			if (other.cd_estado != null)
+		if (cdEstado == null) {
+			if (other.cdEstado != null)
 				return false;
-		} else if (!cd_estado.equals(other.cd_estado))
+		} else if (!cdEstado.equals(other.cdEstado))
 			return false;
 		return true;
 	}
