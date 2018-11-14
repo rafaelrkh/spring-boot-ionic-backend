@@ -30,4 +30,12 @@ public class CategoriaService {
 		obj.setCd_categoria(null); // O Codigo deve ser nulo, pois o método "save" entende que é uma inserção e não alteração
 		return rep.save(obj);
 	}
+	
+	public Categorias update(Categorias obj) {
+		
+		//Verificando existência de código da categoria
+		find(obj.getCd_categoria());
+		
+		return rep.save(obj);
+	}
 }

@@ -53,4 +53,14 @@ public class CategoriaResource {
 		
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping(value="/{cd_categoria}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Categorias obj, @PathVariable Integer cd_categoria){
+		obj.setCd_categoria(cd_categoria); 
+		
+		obj = service.update(obj);
+		
+		return ResponseEntity.noContent().build();
+		 
+	}
 }
