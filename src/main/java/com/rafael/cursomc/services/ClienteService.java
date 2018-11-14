@@ -10,9 +10,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.rafael.cursomc.domain.Cidades;
 import com.rafael.cursomc.domain.Clientes;
+import com.rafael.cursomc.domain.Enderecos;
+import com.rafael.cursomc.domain.enums.TipoCliente;
 import com.rafael.cursomc.dto.ClienteDTO;
+import com.rafael.cursomc.dto.ClienteNewDTO;
 import com.rafael.cursomc.repositories.ClienteRepository;
+import com.rafael.cursomc.repositories.EnderecoRepository;
 import com.rafael.cursomc.services.exceptions.DataIntegrityException;
 import com.rafael.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -21,6 +26,9 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository rep;
+	
+	@Autowired
+	private EnderecoRepository repEnd;
 
 	public Clientes find(Integer cd_cliente) {
 		Optional<Clientes> obj = rep.findById(cd_cliente);
@@ -32,6 +40,16 @@ public class ClienteService {
 
 		return obj.orElse(null);
 	}
+	
+	public Clientes insert(Clientes obj) {
+		obj.setCd_cliente(null); // O Codigo deve ser nulo, pois o método "save" entende que é uma inserção e não alteração
+		
+		obj = rep.save(obj);
+		repEnd.saveAll(obj.getEnderecos());
+		
+		return obj;
+	}
+	
 
 	public Clientes update(Clientes obj) {
 
@@ -71,6 +89,27 @@ public class ClienteService {
 
 	public Clientes fromDTO(ClienteDTO objDto) {
 		return new Clientes(objDto.getCdCliente(), objDto.getDsNome(), objDto.getDsEmail(), null, null, null);
+	}
+	
+	public Clientes fromDTO(ClienteNewDTO objDto) {
+		
+		Clientes cli = new Clientes(null, objDto.getDsNome(), objDto.getDsEmail(), objDto.getDsCpfCnpj(), objDto.getDsSenha(), TipoCliente.toEnum(objDto.getTipo()));
+		Cidades cid = new Cidades(objDto.getCdCidade(),null,null);
+		Enderecos end = new Enderecos(null, objDto.getDsLogradouro(),objDto.getDsNumero(), objDto.getDsBairro(), objDto.getDsComplemento(), objDto.getDsCep(), cli, cid);
+		
+		cli.getEnderecos().add(end);
+		cli.getTelefones().add(objDto.getDsTelefone1());
+		
+		if(objDto.getDsTelefone2() != null) {
+			cli.getTelefones().add(objDto.getDsTelefone2());
+		}
+		
+		if(objDto.getDsTelefone3() != null) {
+			cli.getTelefones().add(objDto.getDsTelefone3());
+		}
+		
+		
+		return cli;
 	}
 	
 	private void updateData(Clientes newObj, Clientes obj) {
