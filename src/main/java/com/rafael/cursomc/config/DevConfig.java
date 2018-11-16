@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.rafael.cursomc.services.DBService;
+import com.rafael.cursomc.services.EmailService;
+import com.rafael.cursomc.services.SMTPEmailService;
 
 //Configurações específicas do profile de Teste
 @Configuration
@@ -34,5 +36,10 @@ public class DevConfig {
 		dbService.instantiateTestDatabase();
 		
 		return true;
+	}
+	
+	@Bean
+	public EmailService emailService() {
+		return new SMTPEmailService();
 	}
 }
