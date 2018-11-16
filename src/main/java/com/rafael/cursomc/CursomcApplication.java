@@ -76,17 +76,17 @@ public class CursomcApplication implements CommandLineRunner {
 		Categorias c6 = new Categorias(null, "Decoração");
 		Categorias c7 = new Categorias(null, "Pefumaria");
 
-		Produtos p1 = new Produtos(null, "Computador", 1000.00);
-		Produtos p2 = new Produtos(null, "Impressora", 323.54);
-		Produtos p3 = new Produtos(null, "Mouse", 50.5);
-		Produtos p4 = new Produtos(null, "Mesa de escritório", 43.5);
-		Produtos p5 = new Produtos(null, "Toalha", 55.00);
-		Produtos p6 = new Produtos(null, "Colcha", 76.78);
-		Produtos p7 = new Produtos(null, "TV true color", 23.5);
-		Produtos p8 = new Produtos(null, "Roçadeira", 1000.00);
-		Produtos p9 = new Produtos(null, "Abajour", 44.25);
-		Produtos p10 = new Produtos(null, "Pendente", 127.5);
-		Produtos p11 = new Produtos(null, "Shampoo", 100.00);
+		Produtos p1 = new Produtos(null, "Computador", 1000.00,34.2);
+		Produtos p2 = new Produtos(null, "Impressora", 323.54,434.2);
+		Produtos p3 = new Produtos(null, "Mouse", 50.5,32.1);
+		Produtos p4 = new Produtos(null, "Mesa de escritório", 43.5,43.6);
+		Produtos p5 = new Produtos(null, "Toalha", 55.00,65.3);
+		Produtos p6 = new Produtos(null, "Colcha", 76.78,98.2);
+		Produtos p7 = new Produtos(null, "TV true color", 23.5,24.00);
+		Produtos p8 = new Produtos(null, "Roçadeira", 1000.00,553.00);
+		Produtos p9 = new Produtos(null, "Abajour", 44.25,234.43);
+		Produtos p10 = new Produtos(null, "Pendente", 127.5,43.2);
+		Produtos p11 = new Produtos(null, "Shampoo", 100.00,982.3);
 
 		c1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
 		c2.getProdutos().addAll(Arrays.asList(p2));

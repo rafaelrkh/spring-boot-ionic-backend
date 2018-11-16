@@ -28,6 +28,7 @@ public class Produtos implements Serializable{
 	private Integer cdProduto;
 	private String dsProduto;
 	private Double quantidadeEstoque;
+	private Double preco;
 	
 	@JsonIgnore
 	@ManyToMany
@@ -57,11 +58,12 @@ public class Produtos implements Serializable{
 
 	}
 
-	public Produtos(Integer cd_produto, String ds_produto, Double quantidade_estoque) {
+	public Produtos(Integer cd_produto, String ds_produto, Double quantidade_estoque, Double preco) {
 		super();
 		this.cdProduto = cd_produto;
 		this.dsProduto = ds_produto;
 		this.quantidadeEstoque = quantidade_estoque;
+		this.preco = preco;
 	}
 
 
@@ -105,6 +107,16 @@ public class Produtos implements Serializable{
 		this.itens = itens;
 	}
 	
+	
+	
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

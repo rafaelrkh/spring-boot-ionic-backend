@@ -31,6 +31,14 @@ public class ItensPedido implements Serializable {
 		this.vlr_unitario = vlr_unitario;
 	}
 	
+	public void setPedido(Pedidos pedido) {
+		id.setPedido(pedido);
+	}
+	
+	public void setProduto(Produtos produto) {
+		id.setProduto(produto);
+	}
+	
 	public double getSubTotal() {
 		return (vlr_unitario* quantidade);
 	}
