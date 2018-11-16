@@ -79,16 +79,37 @@ public class CursomcApplication implements CommandLineRunner {
 		Produtos p1 = new Produtos(null, "Computador", 1000.00);
 		Produtos p2 = new Produtos(null, "Impressora", 323.54);
 		Produtos p3 = new Produtos(null, "Mouse", 50.5);
+		Produtos p4 = new Produtos(null, "Mesa de escritório", 43.5);
+		Produtos p5 = new Produtos(null, "Toalha", 55.00);
+		Produtos p6 = new Produtos(null, "Colcha", 76.78);
+		Produtos p7 = new Produtos(null, "TV true color", 23.5);
+		Produtos p8 = new Produtos(null, "Roçadeira", 1000.00);
+		Produtos p9 = new Produtos(null, "Abajour", 44.25);
+		Produtos p10 = new Produtos(null, "Pendente", 127.5);
+		Produtos p11 = new Produtos(null, "Shampoo", 100.00);
 
 		c1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
 		c2.getProdutos().addAll(Arrays.asList(p2));
+		c3.getProdutos().addAll(Arrays.asList(p5,p6));
+		c4.getProdutos().addAll(Arrays.asList(p1,p2,p3,p7));
+		c5.getProdutos().addAll(Arrays.asList(p8));
+		c6.getProdutos().addAll(Arrays.asList(p9,p10));
+		c7.getProdutos().addAll(Arrays.asList(p11));
 
-		p1.getCategorias().addAll(Arrays.asList(c1));
-		p2.getCategorias().addAll(Arrays.asList(c1, c2));
-		p3.getCategorias().addAll(Arrays.asList(c1));
+		p1.getCategorias().addAll(Arrays.asList(c1,c4));
+		p2.getCategorias().addAll(Arrays.asList(c1, c2,c4));
+		p3.getCategorias().addAll(Arrays.asList(c1,c4));
+		p4.getCategorias().addAll(Arrays.asList(c2));
+		p5.getCategorias().addAll(Arrays.asList(c3));
+		p6.getCategorias().addAll(Arrays.asList(c3));
+		p7.getCategorias().addAll(Arrays.asList(c4));
+		p8.getCategorias().addAll(Arrays.asList(c5));
+		p9.getCategorias().addAll(Arrays.asList(c6));
+		p10.getCategorias().addAll(Arrays.asList(c6));
+		p11.getCategorias().addAll(Arrays.asList(c7));
 
 		categoriaRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7));
-		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
+		produtoRepository.saveAll(Arrays.asList(p1, p2, p3,p4,p5,p6,p7,p8,p9,p10,p11));
 
 		Estados e1 = new Estados(null, "Minas Gerais");
 		Estados e2 = new Estados(null, "São Paulo");
