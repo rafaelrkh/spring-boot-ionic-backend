@@ -10,6 +10,7 @@ import com.rafael.cursomc.domain.ItensPedido;
 import com.rafael.cursomc.domain.PagamentoComBoleto;
 import com.rafael.cursomc.domain.Pedidos;
 import com.rafael.cursomc.domain.enums.EstadoPagamento;
+import com.rafael.cursomc.repositories.ClienteRepository;
 import com.rafael.cursomc.repositories.ItensPedidoRepository;
 import com.rafael.cursomc.repositories.PagamentoRepository;
 import com.rafael.cursomc.repositories.PedidoRepository;
@@ -33,6 +34,12 @@ public class PedidoService {
 	@Autowired
 	private ItensPedidoRepository itemPedidoRepository;
 	
+	@Autowired
+	private ClienteService clienteService;
+	
+	@Autowired
+	private ClienteRepository clienteRepository;
+	
 	public Pedidos find(Integer cd_pedido){
 		  Optional<Pedidos> obj  = rep.findById(cd_pedido);
 		  
@@ -48,7 +55,7 @@ public class PedidoService {
 		
 		obj.setCd_pedido(null);
 		obj.setDt_pedido(new Date());
-		
+		obj.setCliente(clienteService.find(obj.getCliente().getCd_cliente()));
 		obj.getPagamento().setEstado_pagamento(EstadoPagamento.PENDENTE);
 		obj.getPagamento().setPedido(obj);
 		
@@ -64,11 +71,13 @@ public class PedidoService {
 		for(ItensPedido ip : obj.getItens()) {
 			//seta desconto (não coloquei nesse projeto)
 			ip.setVlr_unitario(produtoService.find(ip.getProduto().getCd_produto()).getPreco());		
-			
+			ip.setProduto(produtoService.find(ip.getProduto().getCd_produto()));
 			ip.setPedido(obj);
 		}
 		
 		itemPedidoRepository.saveAll(obj.getItens());
+		
+		System.out.println(obj);
 		
 		return obj;
 	}
