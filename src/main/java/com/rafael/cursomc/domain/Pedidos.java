@@ -46,6 +46,16 @@ public class Pedidos implements Serializable{
 	public Pedidos() {
 		
 	}
+	
+	public double getValorTotal() {
+		double soma = 0.0;
+		
+		for(ItensPedido ip : itens ) {
+			soma = soma + ip.getSubTotal();
+		}
+		
+		return soma;
+	}
 
 	public Pedidos(Integer cd_pedido, Date dt_pedido,  Clientes cliente, Enderecos endereco_entrega) {
 		super();

@@ -21,8 +21,6 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoRepository rep;
 	
-	@Autowired
-	private ProdutoRepository repProduto;
 	
 	@Autowired
 	private CategoriaRepository repCategoria;

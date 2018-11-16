@@ -30,6 +30,10 @@ public class ItensPedido implements Serializable {
 		this.quantidade = quantidade;
 		this.vlr_unitario = vlr_unitario;
 	}
+	
+	public double getSubTotal() {
+		return (vlr_unitario* quantidade);
+	}
 
 	public ItemPedidoPK getId() {
 		return id;
