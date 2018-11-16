@@ -69,6 +69,7 @@ public class DBService {
 		Categorias c5 = new Categorias(null, "Jardinagem");
 		Categorias c6 = new Categorias(null, "Decoração");
 		Categorias c7 = new Categorias(null, "Pefumaria");
+		//Categorias c8 = new Categorias(null, "Teste");
 
 		Produtos p1 = new Produtos(null, "Computador", 1000.00,34.2);
 		Produtos p2 = new Produtos(null, "Impressora", 323.54,434.2);
