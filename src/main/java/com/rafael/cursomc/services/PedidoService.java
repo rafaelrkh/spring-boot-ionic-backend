@@ -10,7 +10,6 @@ import com.rafael.cursomc.domain.ItensPedido;
 import com.rafael.cursomc.domain.PagamentoComBoleto;
 import com.rafael.cursomc.domain.Pedidos;
 import com.rafael.cursomc.domain.enums.EstadoPagamento;
-import com.rafael.cursomc.repositories.ClienteRepository;
 import com.rafael.cursomc.repositories.ItensPedidoRepository;
 import com.rafael.cursomc.repositories.PagamentoRepository;
 import com.rafael.cursomc.repositories.PedidoRepository;
@@ -37,8 +36,6 @@ public class PedidoService {
 	@Autowired
 	private ClienteService clienteService;
 	
-	@Autowired
-	private ClienteRepository clienteRepository;
 	
 	@Autowired
 	private EmailService emailService;
