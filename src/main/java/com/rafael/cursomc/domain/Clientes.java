@@ -5,52 +5,59 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.rafael.cursomc.domain.enums.Perfil;
 import com.rafael.cursomc.domain.enums.TipoCliente;
 
 @Entity
 public class Clientes implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cdCliente;
 	private String dsNome;
-	
-	@Column(unique=true)
+
+	@Column(unique = true)
 	private String dsEmail;
 	private String dsCpfCnpj;
-	
+
 	@JsonIgnore
 	private String dsSenha;
 
 	private Integer tipo;
 
-	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Enderecos> enderecos = new ArrayList<>();
 
 	// Conjunto de telefones para o cliente, ao invés de criar uma nova tabela
 	@ElementCollection
-	@CollectionTable(name="telefone")
+	@CollectionTable(name = "telefone")
 	private Set<String> telefones = new HashSet<>(); // Entidade fraca
-	
+
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "PERFIS")
+	private Set<Integer> perfis = new HashSet<>();
+
 	@JsonIgnore
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy = "cliente")
 	private List<Pedidos> pedidos = new ArrayList<Pedidos>();
 
 	public Clientes() {
-
+		addPerfil(Perfil.CLIENTE); //Todos os usuários, por padrão serão clientes
 	}
 
 	public Clientes(Integer cd_cliente, String ds_nome, String ds_email, String ds_cpf_cnpj, String ds_senha,
@@ -61,7 +68,8 @@ public class Clientes implements Serializable {
 		this.dsEmail = ds_email;
 		this.dsCpfCnpj = ds_cpf_cnpj;
 		this.dsSenha = ds_senha;
-		this.tipo = (tipo ==null) ? null : tipo.getCdTipoCliente();
+		this.tipo = (tipo == null) ? null : tipo.getCdTipoCliente();
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public Integer getCd_cliente() {
@@ -136,6 +144,14 @@ public class Clientes implements Serializable {
 		this.pedidos = pedidos;
 	}
 
+	public Set<Perfil> getPerfis() {
+		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	}
+
+	public void addPerfil(Perfil perfil) {
+		perfis.add(perfil.getCdPerfil());
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -160,8 +176,5 @@ public class Clientes implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 }
