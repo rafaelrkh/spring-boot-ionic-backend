@@ -31,6 +31,8 @@ public class Clientes implements Serializable {
 	@Column(unique=true)
 	private String dsEmail;
 	private String dsCpfCnpj;
+	
+	@JsonIgnore
 	private String dsSenha;
 
 	private Integer tipo;

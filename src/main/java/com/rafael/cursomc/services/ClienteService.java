@@ -8,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rafael.cursomc.domain.Cidades;
@@ -23,6 +24,9 @@ import com.rafael.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 
 	@Autowired
 	private ClienteRepository rep;
@@ -93,7 +97,7 @@ public class ClienteService {
 	
 	public Clientes fromDTO(ClienteNewDTO objDto) {
 		
-		Clientes cli = new Clientes(null, objDto.getDsNome(), objDto.getDsEmail(), objDto.getDsCpfCnpj(), objDto.getDsSenha(), TipoCliente.toEnum(objDto.getTipo()));
+		Clientes cli = new Clientes(null, objDto.getDsNome(), objDto.getDsEmail(), objDto.getDsCpfCnpj(), pe.encode(objDto.getDsSenha()), TipoCliente.toEnum(objDto.getTipo()));
 		Cidades cid = new Cidades(objDto.getCdCidade(),null,null);
 		Enderecos end = new Enderecos(null, objDto.getDsLogradouro(),objDto.getDsNumero(), objDto.getDsBairro(), objDto.getDsComplemento(), objDto.getDsCep(), cli, cid);
 		

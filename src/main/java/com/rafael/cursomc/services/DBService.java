@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rafael.cursomc.domain.Categorias;
@@ -34,31 +35,34 @@ import com.rafael.cursomc.repositories.ProdutoRepository;
 public class DBService {
 	
 	@Autowired
-	CategoriaRepository categoriaRepository;
+	private BCryptPasswordEncoder pe;
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
 
 	@Autowired
-	ProdutoRepository produtoRepository;
+	private ProdutoRepository produtoRepository;
 
 	@Autowired
-	CidadeRepository cidadeRepository;
+	private CidadeRepository cidadeRepository;
 
 	@Autowired
-	EstadoRepository estadoRepository;
+	private EstadoRepository estadoRepository;
 	
 	@Autowired
-	ClienteRepository clienteRepository;
+	private ClienteRepository clienteRepository;
 	
 	@Autowired
-	EnderecoRepository enderecoRepository;
+	private EnderecoRepository enderecoRepository;
 	
 	@Autowired
-	PedidoRepository pedidoRepository;
+	private PedidoRepository pedidoRepository;
 	
 	@Autowired
-	PagamentoRepository pagamentoRepository;
+	private PagamentoRepository pagamentoRepository;
 	
 	@Autowired
-	ItensPedidoRepository itensPedidoRepository;
+	private ItensPedidoRepository itensPedidoRepository;
 
 	public void instantiateTestDatabase() throws ParseException {
 		
@@ -119,7 +123,7 @@ public class DBService {
 		estadoRepository.saveAll(Arrays.asList(e1, e2));
 		cidadeRepository.saveAll(Arrays.asList(ci1, ci2, ci3));
 
-		Clientes cli1 = new Clientes(null, "Maria Silva", "rafael__ptc@hotmail.com", "07003999684", "******", TipoCliente.PESSOAFISICA);
+		Clientes cli1 = new Clientes(null, "Maria Silva", "rafael__ptc@hotmail.com", "07003999684", pe.encode("123"), TipoCliente.PESSOAFISICA);
 		
 		cli1.getTelefones().addAll(Arrays.asList("(34)3831-2278","(34)9984-2006"));
 		
