@@ -107,9 +107,98 @@ public class DBService {
 		p9.getCategorias().addAll(Arrays.asList(c6));
 		p10.getCategorias().addAll(Arrays.asList(c6));
 		p11.getCategorias().addAll(Arrays.asList(c7));
+		
+		/*
+		 Testes
+		 */
+		
+		Produtos p12 = new Produtos(null, "Produto 12", 10.00,1.50);
+		Produtos p13 = new Produtos(null, "Produto 13", 10.00,1.50);
+		Produtos p14 = new Produtos(null, "Produto 14", 10.00,1.50);
+		Produtos p15 = new Produtos(null, "Produto 15", 10.00,1.50);
+		Produtos p16 = new Produtos(null, "Produto 16", 10.00,1.50);
+		Produtos p17 = new Produtos(null, "Produto 17", 10.00,1.50);
+		Produtos p18 = new Produtos(null, "Produto 18", 10.00,1.50);
+		Produtos p19 = new Produtos(null, "Produto 19", 10.00,1.50);
+		Produtos p20 = new Produtos(null, "Produto 20", 10.00,1.50);
+		Produtos p21 = new Produtos(null, "Produto 21", 10.00,1.50);
+		Produtos p22 = new Produtos(null, "Produto 22", 10.00,1.50);
+		Produtos p23 = new Produtos(null, "Produto 23", 10.00,1.50);
+		Produtos p24 = new Produtos(null, "Produto 24", 10.00,1.50);
+		Produtos p25 = new Produtos(null, "Produto 25", 10.00,1.50);
+		Produtos p26 = new Produtos(null, "Produto 26", 10.00,1.50);
+		Produtos p27 = new Produtos(null, "Produto 27", 10.00,1.50);
+		Produtos p28 = new Produtos(null, "Produto 28", 10.00,1.50);
+		Produtos p29 = new Produtos(null, "Produto 29", 10.00,1.50);
+		Produtos p30 = new Produtos(null, "Produto 30", 10.00,1.50);
+		Produtos p31 = new Produtos(null, "Produto 31", 10.00,1.50);
+		Produtos p32 = new Produtos(null, "Produto 32", 10.00,1.50);
+		Produtos p33 = new Produtos(null, "Produto 33", 10.00,1.50);
+		Produtos p34 = new Produtos(null, "Produto 34", 10.00,1.50);
+		Produtos p35 = new Produtos(null, "Produto 35", 10.00,1.50);
+		Produtos p36 = new Produtos(null, "Produto 36", 10.00,1.50);
+		Produtos p37 = new Produtos(null, "Produto 37", 10.00,1.50);
+		Produtos p38 = new Produtos(null, "Produto 38", 10.00,1.50);
+		Produtos p39 = new Produtos(null, "Produto 39", 10.00,1.50);
+		Produtos p40 = new Produtos(null, "Produto 40", 10.00,1.50);
+		Produtos p41 = new Produtos(null, "Produto 41", 10.00,1.50);
+		Produtos p42 = new Produtos(null, "Produto 42", 10.00,1.50);
+		Produtos p43 = new Produtos(null, "Produto 43", 10.00,1.50);
+		Produtos p44 = new Produtos(null, "Produto 44", 10.00,1.50);
+		Produtos p45 = new Produtos(null, "Produto 45", 10.00,1.50);
+		Produtos p46 = new Produtos(null, "Produto 46", 10.00,1.50);
+		Produtos p47 = new Produtos(null, "Produto 47", 10.00,1.50);
+		Produtos p48 = new Produtos(null, "Produto 48", 10.00,1.50);
+		Produtos p49 = new Produtos(null, "Produto 49", 10.00,1.50);
+		Produtos p50 = new Produtos(null, "Produto 50", 10.00,1.50);
+		c1.getProdutos().addAll(Arrays.asList(p12, p13, p14, p15, p16, p17, p18, p19, p20,
+		p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p34, p35, p36, p37, p38,
+		p39, p40, p41, p42, p43, p44, p45, p46, p47, p48, p49, p50));
+		p12.getCategorias().add(c1);
+		p13.getCategorias().add(c1);
+		p14.getCategorias().add(c1);
+		p15.getCategorias().add(c1);
+		p16.getCategorias().add(c1);
+		p17.getCategorias().add(c1);
+		p18.getCategorias().add(c1);
+		p19.getCategorias().add(c1);
+		p20.getCategorias().add(c1);
+		p21.getCategorias().add(c1);
+		p22.getCategorias().add(c1);
+		p23.getCategorias().add(c1);
+		p24.getCategorias().add(c1);
+		p25.getCategorias().add(c1);
+		p26.getCategorias().add(c1);
+		p27.getCategorias().add(c1);
+		p28.getCategorias().add(c1);
+		p29.getCategorias().add(c1);
+		p30.getCategorias().add(c1);
+		p31.getCategorias().add(c1);
+		p32.getCategorias().add(c1);
+		p33.getCategorias().add(c1);
+		p34.getCategorias().add(c1);
+		p35.getCategorias().add(c1);
+		p36.getCategorias().add(c1);
+		p37.getCategorias().add(c1);
+		p38.getCategorias().add(c1);
+		p39.getCategorias().add(c1);
+		p40.getCategorias().add(c1);
+		p41.getCategorias().add(c1);
+		p42.getCategorias().add(c1);
+		p43.getCategorias().add(c1);
+		p44.getCategorias().add(c1);
+		p45.getCategorias().add(c1);
+		p46.getCategorias().add(c1);
+		p47.getCategorias().add(c1);
+		p48.getCategorias().add(c1);
+		p49.getCategorias().add(c1);
+		p50.getCategorias().add(c1);
 
 		categoriaRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3,p4,p5,p6,p7,p8,p9,p10,p11));
+		produtoRepository.saveAll(Arrays.asList(p12, p13, p14, p15, p16, p17, p18, p19, p20,
+				p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p34, p35, p36, p37, p38,
+				p39, p40, p41, p42, p43, p44, p45, p46, p47, p48, p49, p50));
 
 		Estados e1 = new Estados(null, "Minas Gerais");
 		Estados e2 = new Estados(null, "São Paulo");
