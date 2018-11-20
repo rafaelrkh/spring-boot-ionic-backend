@@ -56,6 +56,8 @@ public class Clientes implements Serializable {
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedidos> pedidos = new ArrayList<Pedidos>();
 
+	private String imageUrl;
+	
 	public Clientes() {
 		addPerfil(Perfil.CLIENTE); //Todos os usuários, por padrão serão clientes
 	}
@@ -175,6 +177,14 @@ public class Clientes implements Serializable {
 		} else if (!cdCliente.equals(other.cdCliente))
 			return false;
 		return true;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 }

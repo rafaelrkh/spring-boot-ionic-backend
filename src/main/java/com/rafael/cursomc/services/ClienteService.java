@@ -31,6 +31,9 @@ import com.rafael.cursomc.services.exceptions.ObjectNotFoundException;
 public class ClienteService {
 	
 	@Autowired
+	private ClienteService service;
+	
+	@Autowired
 	private S3Service s3Service;
 	
 	@Autowired
@@ -136,6 +139,19 @@ public class ClienteService {
 	}
 	
 	public URI uploadProfilePicture(MultipartFile multipartFile) {
-		return s3Service.uploadFile(multipartFile);
+		UserSS user = UserService.authenticated();
+		if (user == null) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
+		URI uri = s3Service.uploadFile(multipartFile);
+		
+		Clientes cli = service.find(user.getCdUsuario());
+		cli.setImageUrl(uri.toString());
+		rep.save(cli);
+		
+		return uri;
 	}
+
+	
 }
