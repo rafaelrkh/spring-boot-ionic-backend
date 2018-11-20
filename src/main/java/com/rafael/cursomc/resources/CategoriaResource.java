@@ -54,6 +54,7 @@ public class CategoriaResource {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody CategoriaDTO objDto){
+		
 		Categorias obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		
@@ -68,6 +69,7 @@ public class CategoriaResource {
 	public ResponseEntity<Void> update(@Valid @RequestBody CategoriaDTO objDto, @PathVariable Integer cd_categoria){
 		Categorias obj = service.fromDTO(objDto);
 		obj.setCd_categoria(cd_categoria); 
+		
 		
 		obj = service.update(obj);
 		
