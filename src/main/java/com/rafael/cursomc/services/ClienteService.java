@@ -1,5 +1,6 @@
 package com.rafael.cursomc.services;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.rafael.cursomc.domain.Cidades;
 import com.rafael.cursomc.domain.Clientes;
@@ -27,6 +29,9 @@ import com.rafael.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
+	
+	@Autowired
+	private S3Service s3Service;
 	
 	@Autowired
 	private BCryptPasswordEncoder pe;
@@ -128,5 +133,9 @@ public class ClienteService {
 	private void updateData(Clientes newObj, Clientes obj) {
 		newObj.setDs_nome(obj.getDs_nome());
 		newObj.setDs_email(obj.getDs_email());
+	}
+	
+	public URI uploadProfilePicture(MultipartFile multipartFile) {
+		return s3Service.uploadFile(multipartFile);
 	}
 }
