@@ -109,6 +109,23 @@ public class ClienteService {
 	public List<Clientes> findAll() {
 		return rep.findAll();
 	}
+	
+	public Clientes findByDsEmail(String dsEmail) {
+		
+		UserSS user = UserService.authenticated();
+		if (user == null || !user.hasRole(Perfil.ADMIN) && !dsEmail.equals(user.getUsername())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
+ 		Clientes obj = rep.findByDsEmail(dsEmail);
+ 		
+		if (obj == null) {
+			throw new ObjectNotFoundException(
+					"Objeto não encontrado! Id: " + user.getCdUsuario() + ", Tipo: " + Clientes.class.getName());
+		}
+		
+		return obj;
+	}
 
 	// Retorna uma página de Clientes, fazendo a "Paginação"
 	public Page<Clientes> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
